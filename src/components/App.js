@@ -4,8 +4,7 @@ import '../styles/App.css';
 import Search from './SearchBar'
 import AllJobs from './jobs/AllJobs'
 import JobInfo from './jobs/JobInfo'
-
-
+import JobHistory from './jobs/JobHistory'
 
 class App extends Component {
   render() {
@@ -18,6 +17,7 @@ class App extends Component {
           <Search />
         </div>
         <div>
+          <JobHistory />
           <AllJobs />
           <JobInfo />
         </div>
