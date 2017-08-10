@@ -30,7 +30,7 @@ class App extends Component {
   };
 
   render() {
-
+    const { allJobsData } = this.state
     return (
       <div className="App">
         <div className="App-header">
@@ -39,7 +39,7 @@ class App extends Component {
         </div>
         <div>
           <JobHistory/>
-          <AllJobs/>
+          <AllJobs allJobs={allJobsData}/>
           <JobInfo/>
         </div>
       </div>
