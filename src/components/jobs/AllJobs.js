@@ -10,7 +10,7 @@ class AllJobs extends Component {
       </div>
     )
     return (
-      <div >
+      <div className="all_jobs_wrapper">
         <p>this is the All job compon </p>
         {eachJob}
       </div>
