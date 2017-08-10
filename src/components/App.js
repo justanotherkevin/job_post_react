@@ -14,7 +14,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allJobsData: []
+      allJobsData: [],
+      jobHistoryData: []
     };
   };
 
@@ -32,15 +33,15 @@ class App extends Component {
   };
 
   render() {
-    const { allJobsData } = this.state
+    const { allJobsData, jobHistoryData } = this.state
     return (
       <div className="App">
         <div className="App-header">
           <h2>Welcome to React</h2>
           <Search/>
         </div>
-        <div>
-          <JobHistory/>
+        <div className="app_body_wrapper">
+          <JobHistory JobHistory={jobHistoryData}/>
           <AllJobs allJobs={allJobsData}/>
           <JobInfo/>
         </div>
