@@ -19,14 +19,16 @@ class App extends Component {
   };
 
   componentDidMount() {
-    // axios.get('http://localhost:3000/job_posts').then(function(response) {
-    //   console.log(response);
-    // }).catch(function(error) {
-    //   console.log(error);
-    // });
+    const self = this;
+    axios.get('http://localhost:3000/job_posts').then(function(response) {
+      console.log(response);
+      self.setState( {allJobsData: response.data} );
+    }).catch(function(error) {
+      console.log(error);
+      const jobPosts = jobsData;
+      self.setState( {allJobsData: jobPosts} );
+    });
 
-    const jobPosts = jobsData;
-    this.setState( {allJobsData: jobPosts} );
   };
 
   render() {
