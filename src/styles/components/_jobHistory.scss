@@ -1,0 +1,6 @@
+@import "../variables";
+
+.job_history_wrapper {
+  @include border_style;
+  margin: 10px;
+}
