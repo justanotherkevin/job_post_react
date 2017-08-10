@@ -1,3 +1,5 @@
+@import "variables";
+
 .App {
   text-align: center;
 }
@@ -18,10 +20,26 @@
   font-size: large;
 }
 
+.app_body_wrapper {
+  display: flex;
+  flex-direction: row;
+  .job_history_wrapper {
+    flex: 1;
+  }
+  .all_jobs_wrapper {
+    flex: 3;
+  }
+  .job_info_wrapper {
+    flex: 3;
+  }
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
 
-/*@import 'styles/_colors.scss'*/
+@import 'components/jobHistory';
+@import 'components/allJobs';
+@import 'components/jobInfo';
