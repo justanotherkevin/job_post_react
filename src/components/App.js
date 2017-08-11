@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import '../styles/App.css';
 // import data for testing
 import jobsData    from '../data/allJobData';
-
 import Search     from './SearchBar';
 import AllJobs    from './jobs/AllJobs';
-import JobInfo    from './jobs/JobInfo';
 import JobHistory from './jobs/JobHistory';
+import MapJobPost from './map_job_post/MapJobPost';
 
 import axios      from 'axios';
 
@@ -16,38 +15,45 @@ class App extends Component {
     this.state = {
       allJobsData: [],
       jobHistoryData: [],
-      jobInfoData: []
+      oneJob: [],
+      renderType: "map",
+      mapJobPostData: []
     };
+    this.showOneJob = this.showOneJob.bind(this)
   };
 
-  componentDidMount() {
+  componentWillMount() {
     const self = this;
     axios.get('http://localhost:3000/job_posts').then(function(response) {
       self.setState( {allJobsData: response.data} );
     }).catch(function(error) {
       self.setState( {allJobsData: jobsData} );
     });
-
   };
 
-  changeStateJobInfoData = (data) => {
-    this.setState({ jobInfoData: data })
+  showOneJob(data) {
+    this.setState({
+      // the child will chose to send which job to show
+      mapJobPostData: data,
+      renderType: "job_info"
+    })
   }
 
   render() {
     // This create const for each state; don't need to always type this.state.(state)
-    const { allJobsData, jobHistoryData, jobInfoData} = this.state
+    const { allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType} = this.state
 
     return (
       <div className="App">
         <div className="App-header">
           <h2>Welcome to React</h2>
           <Search/>
+          <button onClick={ this.addToAllJobsData }>Post A Job</button>
         </div>
         <div className="app_body_wrapper">
-          <JobHistory jobHistory={ jobHistoryData }/>
-          <AllJobs allJobs={ allJobsData } changeStateJobInfoData={ this.changeStateJobInfoData }/>
-          <JobInfo jobInfo={ jobInfoData }/>
+          <JobHistory jobHistory={ jobHistoryData } />
+          <AllJobs allJobs={ allJobsData } showOneJob={ this.showOneJob } />
+          <MapJobPost mapJobPostData={mapJobPostData} renderType={ renderType }/>
         </div>
       </div>
     );
