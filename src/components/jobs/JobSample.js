@@ -14,7 +14,7 @@ class JobSample extends Component {
   }
   mountJobInfo() {
     const { job } = this.props
-    this.props.changeStateJobInfoData(job);
+    this.props.showOneJob(job);
   };
 
   render() {
