@@ -21,7 +21,7 @@
     flex: 1; }
   .app_body_wrapper .all_jobs_wrapper {
     flex: 3; }
-  .app_body_wrapper .job_info_wrapper {
+  .app_body_wrapper .map_job_post_wrapper {
     flex: 3; }
 
 @keyframes App-logo-spin {
@@ -40,5 +40,9 @@
   text-align: justify; }
 
 .job_info_wrapper {
+  border: 2px solid gray;
+  margin: 10px; }
+
+.map_job_post_wrapper {
   border: 2px solid gray;
   margin: 10px; }
