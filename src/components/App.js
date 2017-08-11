@@ -15,25 +15,29 @@ class App extends Component {
     super(props);
     this.state = {
       allJobsData: [],
-      jobHistoryData: []
+      jobHistoryData: [],
+      jobInfoData: []
     };
   };
 
   componentDidMount() {
     const self = this;
     axios.get('http://localhost:3000/job_posts').then(function(response) {
-      console.log(response);
       self.setState( {allJobsData: response.data} );
     }).catch(function(error) {
-      console.log(error);
-      const jobPosts = jobsData;
-      self.setState( {allJobsData: jobPosts} );
+      self.setState( {allJobsData: jobsData} );
     });
 
   };
 
+  changeStateJobInfoData = (data) => {
+    this.setState({ jobInfoData: data })
+  }
+
   render() {
-    const { allJobsData, jobHistoryData } = this.state
+    // This create const for each state; don't need to always type this.state.(state)
+    const { allJobsData, jobHistoryData, jobInfoData} = this.state
+
     return (
       <div className="App">
         <div className="App-header">
@@ -41,9 +45,9 @@ class App extends Component {
           <Search/>
         </div>
         <div className="app_body_wrapper">
-          <JobHistory JobHistory={jobHistoryData}/>
-          <AllJobs allJobs={allJobsData}/>
-          <JobInfo/>
+          <JobHistory jobHistory={ jobHistoryData }/>
+          <AllJobs allJobs={ allJobsData } changeStateJobInfoData={ this.changeStateJobInfoData }/>
+          <JobInfo jobInfo={ jobInfoData }/>
         </div>
       </div>
     );
