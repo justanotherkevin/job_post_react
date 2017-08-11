@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class JobInfo extends Component {
 
   render() {
-    const jobInfo = this.props.jobInfo
+    const jobInfo = this.props.oneJob
     return (
         <div className="job_info_wrapper side_div">
           { Object.keys(jobInfo).length > 0 &&
