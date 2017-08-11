@@ -14,7 +14,7 @@ class AllJobs extends Component {
         <p>this is the All job compon </p>
         {this.props.allJobs.map(
           ( job, index ) =>
-          <JobSample key={ job.id } job={ job } changeStateJobInfoData={ this.props.changeStateJobInfoData }/>
+          <JobSample key={ job.id } job={ job } showOneJob={ this.props.showOneJob }/>
         )}
       </div>
     )
