@@ -1,23 +1,17 @@
 import React, { Component } from 'react';
-// import JobInfo    from './jobs/JobInfo';
+
 import Map from './Map';
 import JobInfo from './JobInfo';
 import NewPost from './NewPost';
 
 class MapJobPost extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: "map"
-    };
-  };
-
+  // switchcase for 3 components
   notification(show)  {
       switch(show) {
           case 'map':
               return <Map />;
           case 'job_info':
-              return <JobInfo />;
+              return <JobInfo oneJob={this.props.mapJobPostData}/>;
           case 'new_post':
               return <NewPost />;
           default:
@@ -26,12 +20,11 @@ class MapJobPost extends Component {
   }
 
   render() {
-
+    // return the desire component
     return (
       <div className='map_job_post_wrapper'>
         <p>this is the map job and post compon </p>
-        {this.notification(this.state.show)}
-
+        {this.notification(this.props.renderType)}
       </div>
     )
   };
