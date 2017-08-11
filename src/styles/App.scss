@@ -29,7 +29,7 @@
   .all_jobs_wrapper {
     flex: 3;
   }
-  .job_info_wrapper {
+  .map_job_post_wrapper {
     flex: 3;
   }
 }
@@ -43,3 +43,4 @@
 @import 'components/jobHistory';
 @import 'components/allJobs';
 @import 'components/jobInfo';
+@import 'components/mapJobPost';
