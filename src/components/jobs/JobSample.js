@@ -25,8 +25,8 @@ class JobSample extends Component {
           <h3 onClick={this.mountJobInfo} >{job.title}</h3>
           <p>{job.company_name} - {job.location}</p>
           <p>{job.summary.split(' ').slice(0, 15).join(' ')+"..."}</p>
-          <pral>Desire skills: {job.skills} </pral>
-          <pral>Posted on: {job.date_created}</pral>
+          <p>Desire skills: {job.skills} </p>
+          <p>Posted on: {job.date_created}</p>
         </div>
     )
   };
