@@ -46,3 +46,7 @@
 .map_job_post_wrapper {
   border: 2px solid gray;
   margin: 10px; }
+
+.new_post_wrapper .new_post_form {
+  display: flex;
+  flex-direction: column; }
