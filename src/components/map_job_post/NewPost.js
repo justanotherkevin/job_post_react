@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class NewPost extends Component {
 
@@ -10,14 +11,17 @@ class NewPost extends Component {
         title:"helllo",
         company_name:"company name",
         location: "Location",
-        skill: "Skills",
-        summary: "summary"
+        skills: "Skills",
+        summary: "summary",
+        lower_salary: "0",
+        upper_salary: "0",
+        date_created: ""
       }
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getSummaryField = this.getSummaryField.bind(this);
+    // this.getSummaryField = this.getSummaryField.bind(this);
   }
 
   handleChange(event) {
@@ -30,56 +34,49 @@ class NewPost extends Component {
             this.setState({newjob: {location: event.target.value}});
         case 'new_post_skills':
             this.setState({newjob: {skills: event.target.value}});
-        // case 'new_post_location':
-        //     this.setState({newjob: {location: event.target.value}});
+        case 'new_post_summay':
+            this.setState({newjob: {summary: event.target.value}});
         default:
             return null;
     }
   }
 
   handleSubmit(event) {
-    debugger
-    // event.target[0].value
-    this.setState({
-      newjob: {title: event.target[0].value}
-    });
+    this.postJobToApi(this.state.newjob)
     alert('A name was submitted: ' + this.state.newjob);
-
-    // postJobToApi(event)
     // post to rails api ==> make new job into jobpost database
     // recall database for new updated jobposts data
     // should then auto re-render with new wjob on top of all jobposts data state
     event.preventDefault();
   }
   postJobToApi(data) {
-    debugger
     console.log(data);
-    // axios.post('/job_posts', {
-    //   firstName: 'Fred',
-    //   lastName: 'Flintstone'
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
+    axios.post('http://localhost:3000/job_posts', data)
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
-  getSummaryField() {
-    return (
-      <textarea
-        componentClass="textarea"
-        autoFocus={true}
-        value={this.state.value}
-        onChange={this.handleChange} />
-    )
+  getDateTime() {
+    const date = new Date()
+    const datevalues = [
+       date.getFullYear(),
+       date.getMonth()+1,
+       date.getDate(),
+       date.getHours(),
+       date.getMinutes(),
+       date.getSeconds(),
+    ];
+    return datevalues;
   }
 
   render() {
 
     return (
-      <div>
-        <h3>This is posing a job!</h3>
+      <div className="new_post_wrapper">
+        <h3 className="new_post_header">This is posting a job!</h3>
         <form className="new_post_form" onSubmit={this.handleSubmit}>
           <label>
             Post Title:
@@ -97,14 +94,9 @@ class NewPost extends Component {
             Desire Skills:
             <input className="new_post_skills" defaultValue="Skills" onChange={this.handleChange} />
           </label>
-
           <label>
             Summary:
-            <textarea
-              componentClass="textarea"
-              autoFocus={true}
-              defaultValue="Company Summary"
-              onChange={this.handleChange} />
+            <textarea className ="new_post_summay" defaultValue="Company Summary" autoFocus={true} onChange={this.handleChange} />
           </label>
           <label>
             <input type="submit" value="Submit" />
