@@ -20,6 +20,7 @@ class App extends Component {
       mapJobPostData: []
     };
     this.showOneJob = this.showOneJob.bind(this)
+    this.showPostNewJob = this.showPostNewJob.bind(this)
   };
 
   componentWillMount() {
@@ -39,6 +40,12 @@ class App extends Component {
     })
   }
 
+  showPostNewJob() {
+    this.setState({
+      renderType: "new_post"
+    })
+  }
+
   render() {
     // This create const for each state; don't need to always type this.state.(state)
     const { allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType} = this.state
@@ -48,7 +55,7 @@ class App extends Component {
         <div className="App-header">
           <h2>Welcome to React</h2>
           <Search/>
-          <button onClick={ this.addToAllJobsData }>Post A Job</button>
+          <button onClick={ this.showPostNewJob }>Post A Job</button>
         </div>
         <div className="app_body_wrapper">
           <JobHistory jobHistory={ jobHistoryData } />
