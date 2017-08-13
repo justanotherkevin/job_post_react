@@ -6,6 +6,7 @@ import Search from './SearchBar';
 import AllJobs from './jobs/AllJobs';
 import JobHistory from './jobs/JobHistory';
 import MapJobPost from './map_job_post/MapJobPost';
+import Map from './map_job_post/GoogleMaps';
 
 import axios from 'axios';
 
@@ -19,9 +20,10 @@ class App extends Component {
             renderType: "map",
             mapJobPostData: []
         };
-        this.showOneJob = this.showOneJob.bind(this)
-        this.showPostNewJob = this.showPostNewJob.bind(this)
-        this.mountApiGetData = this.mountApiGetData.bind(this)
+        this.showOneJob = this.showOneJob.bind(this);
+        this.showGoogleMap = this.showGoogleMap.bind(this);
+        this.showPostNewJob = this.showPostNewJob.bind(this);
+        this.mountApiGetData = this.mountApiGetData.bind(this);
     };
 
     componentWillMount() {
@@ -51,6 +53,10 @@ class App extends Component {
         this.setState({renderType: "new_post"})
     }
 
+    showGoogleMap() {
+        this.setState({renderType: "map"})
+    }
+
     render() {
         // This create const for each state; don't need to always type this.state.(state)
         const {allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType} = this.state
@@ -74,6 +80,7 @@ class App extends Component {
                         mapJobPostData={mapJobPostData}
                         renderType={renderType}
                         mountApiGetData={this.mountApiGetData}
+                        showGoogleMap={this.showGoogleMap}
                     />
                 </div>
             </div>
