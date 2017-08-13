@@ -21,9 +21,14 @@ class App extends Component {
         };
         this.showOneJob = this.showOneJob.bind(this)
         this.showPostNewJob = this.showPostNewJob.bind(this)
+        this.mountApiGetData = this.mountApiGetData.bind(this)
     };
 
     componentWillMount() {
+        this.mountApiGetData();
+    };
+
+    mountApiGetData() {
         const self = this;
         axios.get('http://localhost:3000/job_posts').then(function(response) {
             // user data from api call
@@ -58,9 +63,18 @@ class App extends Component {
                     <button onClick={this.showPostNewJob}>Post A Job</button>
                 </div>
                 <div className="app_body_wrapper">
-                    <JobHistory jobHistory={jobHistoryData}/>
-                    <AllJobs allJobs={allJobsData} showOneJob={this.showOneJob}/>
-                    <MapJobPost mapJobPostData={mapJobPostData} renderType={renderType}/>
+                    <JobHistory
+                        jobHistory={jobHistoryData}
+                    />
+                    <AllJobs
+                        allJobs={allJobsData}
+                        showOneJob={this.showOneJob}
+                    />
+                    <MapJobPost
+                        mapJobPostData={mapJobPostData}
+                        renderType={renderType}
+                        mountApiGetData={this.mountApiGetData}
+                    />
                 </div>
             </div>
         );
