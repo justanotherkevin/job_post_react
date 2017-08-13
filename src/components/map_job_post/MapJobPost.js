@@ -13,7 +13,7 @@ class MapJobPost extends Component {
           case 'job_info':
               return <JobInfo oneJob={this.props.mapJobPostData}/>;
           case 'new_post':
-              return <NewPost />;
+              return <NewPost mountApiGetData={this.props.mountApiGetData}/>;
           default:
               return null;
       }
