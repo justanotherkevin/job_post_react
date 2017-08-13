@@ -1,35 +1,34 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class JobSample extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      job: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            job: []
+        };
+        this.mountJobInfo = this.mountJobInfo.bind(this)
     };
-    this.mountJobInfo = this.mountJobInfo.bind(this)
-  };
-  componentWillMount() {
+    componentWillMount() {}
+    mountJobInfo() {
+        const {job} = this.props
+        this.props.showOneJob(job);
+    };
 
-  }
-  mountJobInfo() {
-    const { job } = this.props
-    this.props.showOneJob(job);
-  };
-
-  render() {
-    const { job } = this.props
-
-    return (
-        <div className="one_job">
-          <h3 onClick={this.mountJobInfo} >{job.title}</h3>
-          <p>{job.company_name} - {job.location}</p>
-          <p>{job.summary.split(' ').slice(0, 15).join(' ')+"..."}</p>
-          <p>Desire skills: {job.skills} </p>
-          <p>Posted on: {job.date_created}</p>
-        </div>
-    )
-  };
+    render() {
+        const {job} = this.props
+        return (
+            <div className="one_job">
+                <h3 onClick={this.mountJobInfo}>{job.title}</h3>
+                <p>{job.company_name}
+                    - {job.location}</p>
+                <p>{job.summary.split(' ').slice(0, 15).join(' ') + "..."}</p>
+                <p>Desire skills: {job.skills}
+                </p>
+                <p>Posted on: {job.date_created}</p>
+            </div>
+        )
+    };
 };
 
 export default JobSample
