@@ -70,10 +70,13 @@ class NewPost extends Component {
     }
     postJobToApi(data) {
         console.log(data);
+        const self = this;
         axios.post('http://localhost:3000/job_posts', data).then(function(response) {
-            console.log(response);
+            // after successful POST, mount the a GET call
+            self.props.mountApiGetData();
         }).catch(function(error) {
-            console.log(error);
+            // if there is an error?
+            alert('Seem like theres an error on our end');
         });
     }
     getDateTime() {
