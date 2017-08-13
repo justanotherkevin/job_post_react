@@ -17,10 +17,9 @@ class NewPost extends Component {
                 date_created: ""
             }
         };
-
+        this.closeNewPost = this.closeNewPost.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.getSummaryField = this.getSummaryField.bind(this);
     }
 
     handleChange(event) {
@@ -90,11 +89,15 @@ class NewPost extends Component {
         ];
         return datevalues;
     }
+    closeNewPost() {
+        this.props.showGoogleMap();
+    }
 
     render() {
 
         return (
             <div className="new_post_wrapper">
+                <button onClick={this.closeNewPost} >close me </button>
                 <h3 className="new_post_header">This is posting a job!</h3>
                 <form className="new_post_form" onSubmit={this.handleSubmit}>
                     <label>
@@ -120,7 +123,6 @@ class NewPost extends Component {
                     <label>
                         <input type="submit" value="Submit"/>
                     </label>
-
                 </form>
             </div>
         )
