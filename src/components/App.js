@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 import '../styles/App.css';
 // import data for testing
 import jobsData from '../data/allJobData';
+
 import Search from './SearchBar';
 import AllJobs from './jobs/AllJobs';
 import JobHistory from './jobs/JobHistory';
 import MapJobPost from './map_job_post/MapJobPost';
 import Map from './map_job_post/GoogleMaps';
 
-import axios from 'axios';
 
 class App extends Component {
     constructor(props) {
