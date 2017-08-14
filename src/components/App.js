@@ -8,8 +8,6 @@ import Search from './SearchBar';
 import AllJobs from './jobs/AllJobs';
 import JobHistory from './jobs/JobHistory';
 import MapJobPost from './map_job_post/MapJobPost';
-import Map from './map_job_post/GoogleMaps';
-
 
 class App extends Component {
     constructor(props) {
