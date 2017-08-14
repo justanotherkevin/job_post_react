@@ -3,4 +3,8 @@
 .map_job_post_wrapper {
   @include  border_style;
   margin: 10px;
+
+  .map {
+    position: relative !important;
+  }
 }
