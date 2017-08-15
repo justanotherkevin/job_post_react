@@ -8,7 +8,7 @@ class NewPost extends Component {
         this.state = {
             newjob: {
                 title: "",
-                company_name: " ",
+                company_name: "",
                 location: "",
                 skills: "",
                 summary: "",
@@ -78,7 +78,7 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <input
-                            className="new_post_title form_control"
+                            className={"new_post_title form_control " + (this.state.newjob['title'] === ''? '' : 'has_value') }
                             type="text"
                             value={this.state.title}
                             onChange={this.handleChange}/>
@@ -87,7 +87,7 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <input
-                            className="new_post_company_name form_control"
+                            className={'new_post_company_name form_control ' + (this.state.newjob['company_name'] === ''? '' : 'has_value') }
                             value={this.state.company_name}
                             onChange={this.handleChange}/>
                         <label>Company Name:</label>
@@ -95,7 +95,7 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <input
-                            className="new_post_location form_control"
+                            className={"new_post_location form_control " + (this.state.newjob['location'] === ''? '' : 'has_value') }
                             value={this.state.location}
                             onChange={this.handleChange}/>
                         <label>Location:</label>
@@ -103,7 +103,7 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <input
-                            className="new_post_skills form_control"
+                            className={"new_post_skills form_control " +  (this.state.newjob['skills'] === ''? '' : 'has_value') }
                             value={this.state.skills}
                             onChange={this.handleChange}/>
                         <label>Desire Skills:</label>
@@ -111,7 +111,7 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <textarea
-                            className="new_post_summay form_control"
+                            className={"new_post_summay form_control " + (this.state.newjob['summary'] === ''? '' : 'has_value') }
                             value={this.state.summary}
                             onChange={this.handleChange}/>
                         <label>Summary:</label>
