@@ -85,7 +85,8 @@
         border-width: 1px;
         border-color: #8080ff;
         transition: all .5s ease-out; }
-      .new_post_wrapper .input_group .form_control:focus + label {
+      .new_post_wrapper .input_group .form_control:focus + label,
+      .new_post_wrapper .input_group .form_control.has_value + label {
         top: -15px;
         font-size: 12px;
         color: #8080ff; }
