@@ -23,52 +23,99 @@ class NewPost extends Component {
     }
 
     handleChange(event) {
-        switch (event.target.className) {
+        const findClassName = event.target.className.split(" ")[0]
+        const {title, company_name, location, skills, summary, lower_salary, upper_salary, date_created} = this.state.newjob
+
+        console.log(findClassName);
+        console.log(event.target.value);
+        console.log(this.state.newjob);
+        switch ( findClassName ) {
             case 'new_post_post_title':
                 this.setState({
                     newjob: {
-                        title: event.target.value
+                        title: event.target.value,
+                        company_name: company_name,
+                        location: location,
+                        skills: skills,
+                        summary: summary,
+                        lower_salary: lower_salary,
+                        upper_salary: upper_salary,
+                        date_created: date_created
                     }
                 });
+                break;
             case 'new_post_company_name':
                 this.setState({
                     newjob: {
-                        company_name: event.target.value
+                        title: title,
+                        company_name: event.target.value,
+                        location: location,
+                        skills: skills,
+                        summary: summary,
+                        lower_salary: lower_salary,
+                        upper_salary: upper_salary,
+                        date_created: date_created
                     }
                 });
+                break;
             case 'new_post_location':
                 this.setState({
                     newjob: {
-                        location: event.target.value
+                        title: title,
+                        company_name: company_name,
+                        location: event.target.value,
+                        skills: skills,
+                        summary: summary,
+                        lower_salary: lower_salary,
+                        upper_salary: upper_salary,
+                        date_created: date_created
                     }
                 });
+                break;
             case 'new_post_skills':
                 this.setState({
                     newjob: {
-                        skills: event.target.value
+                        title: title,
+                        company_name: company_name,
+                        location: location,
+                        skills: event.target.value,
+                        summary: summary,
+                        lower_salary: lower_salary,
+                        upper_salary: upper_salary,
+                        date_created: date_created
                     }
                 });
+                break;
             case 'new_post_summay':
                 this.setState({
                     newjob: {
-                        summary: event.target.value
+                        title: title,
+                        company_name: company_name,
+                        location: location,
+                        skills: skills,
+                        summary: event.target.value,
+                        lower_salary: lower_salary,
+                        upper_salary: upper_salary,
+                        date_created: date_created
                     }
                 });
+                break;
             default:
                 return null;
         }
     }
 
     handleSubmit(event) {
+        debugger
         this.postJobToApi(this.state.newjob)
-        alert('A name was submitted: ' + this.state.newjob);
+        alert('A new post was submitted');
         // post to rails api ==> make new job into jobpost database
         // recall database for new updated jobposts data
         // should then auto re-render with new wjob on top of all jobposts data state
         event.preventDefault();
     }
     postJobToApi(data) {
-        console.log(data);
+
         const self = this;
         axios.post('http://localhost:3000/job_posts', data).then(function(response) {
             // after successful POST, mount the a GET call
@@ -99,27 +146,49 @@ class NewPost extends Component {
             <div className="new_post_wrapper">
                 <button onClick={this.closeNewPost} >close me </button>
                 <h3 className="new_post_header">This is posting a job!</h3>
+
                 <form className="new_post_form" onSubmit={this.handleSubmit}>
-                    <label>
-                        Post Title:
-                        <input className="new_post_post_title" defaultValue="Job Title" onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Company Name:
-                        <input className="new_post_company_name" defaultValue="Company Name" onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Location:
-                        <input className="new_post_location" defaultValue="Location" onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Desire Skills:
-                        <input className="new_post_skills" defaultValue="Skills" onChange={this.handleChange}/>
-                    </label>
-                    <label>
-                        Summary:
-                        <textarea className="new_post_summay" defaultValue="Company Summary" autoFocus={true} onChange={this.handleChange}/>
-                    </label>
+
+                    <div className="input_group">
+                        <input
+                            className="new_post_post_title form_control"
+                            type="text"
+                            value={this.state.title}
+                            onChange={this.handleChange}/>
+                        <label>Post Title:</label>
+                    </div>
+
+                    <div className="input_group">
+                        <input
+                            className="new_post_company_name form_control"
+                            value={this.state.company_name}
+                            onChange={this.handleChange}/>
+                        <label>Company Name:</label>
+                    </div>
+
+                    <div className="input_group">
+                        <input
+                            className="new_post_location form_control"
+                            value={this.state.location}
+                            onChange={this.handleChange}/>
+                        <label>Location:</label>
+                    </div>
+
+                    <div className="input_group">
+                        <input
+                            className="new_post_skills form_control"
+                            value={this.state.skills}
+                            onChange={this.handleChange}/>
+                        <label>Desire Skills:</label>
+                    </div>
+
+                    <div className="input_group">
+                        <textarea
+                            className="new_post_summay form_control"
+                            value={this.state.summary}
+                            onChange={this.handleChange}/>
+                        <label>Summary:</label>
+                    </div>
                     <label>
                         <input type="submit" value="Submit"/>
                     </label>
