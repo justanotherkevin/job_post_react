@@ -7,13 +7,13 @@ class NewPost extends Component {
         super(props);
         this.state = {
             newjob: {
-                title: "helllo",
-                company_name: "company name",
-                location: "Location",
-                skills: "Skills",
-                summary: "summary",
-                lower_salary: "0",
-                upper_salary: "0",
+                title: "",
+                company_name: " ",
+                location: "",
+                skills: "",
+                summary: "",
+                lower_salary: "",
+                upper_salary: "",
                 date_created: ""
             }
         };
@@ -23,90 +23,17 @@ class NewPost extends Component {
     }
 
     handleChange(event) {
-        const findClassName = event.target.className.split(" ")[0]
-        const {title, company_name, location, skills, summary, lower_salary, upper_salary, date_created} = this.state.newjob
+        const targetClassName = event.target.className.split(" ")[0].replace("new_post_", "")
+        const modNewjob = this.state.newjob
 
-        console.log(findClassName);
-        console.log(event.target.value);
-        console.log(this.state.newjob);
-        switch ( findClassName ) {
-            case 'new_post_post_title':
-                this.setState({
-                    newjob: {
-                        title: event.target.value,
-                        company_name: company_name,
-                        location: location,
-                        skills: skills,
-                        summary: summary,
-                        lower_salary: lower_salary,
-                        upper_salary: upper_salary,
-                        date_created: date_created
-                    }
-                });
-                break;
-            case 'new_post_company_name':
-                this.setState({
-                    newjob: {
-                        title: title,
-                        company_name: event.target.value,
-                        location: location,
-                        skills: skills,
-                        summary: summary,
-                        lower_salary: lower_salary,
-                        upper_salary: upper_salary,
-                        date_created: date_created
-                    }
-                });
-                break;
-            case 'new_post_location':
-                this.setState({
-                    newjob: {
-                        title: title,
-                        company_name: company_name,
-                        location: event.target.value,
-                        skills: skills,
-                        summary: summary,
-                        lower_salary: lower_salary,
-                        upper_salary: upper_salary,
-                        date_created: date_created
-                    }
-                });
-                break;
-            case 'new_post_skills':
-                this.setState({
-                    newjob: {
-                        title: title,
-                        company_name: company_name,
-                        location: location,
-                        skills: event.target.value,
-                        summary: summary,
-                        lower_salary: lower_salary,
-                        upper_salary: upper_salary,
-                        date_created: date_created
-                    }
-                });
-                break;
-            case 'new_post_summay':
-                this.setState({
-                    newjob: {
-                        title: title,
-                        company_name: company_name,
-                        location: location,
-                        skills: skills,
-                        summary: event.target.value,
-                        lower_salary: lower_salary,
-                        upper_salary: upper_salary,
-                        date_created: date_created
-                    }
-                });
-                break;
-            default:
-                return null;
-        }
+        modNewjob[targetClassName] = event.target.value
+
+        this.setState({
+            newjob: modNewjob
+        });
     }
 
     handleSubmit(event) {
-        debugger
         this.postJobToApi(this.state.newjob)
         alert('A new post was submitted');
         // post to rails api ==> make new job into jobpost database
@@ -151,7 +78,7 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <input
-                            className="new_post_post_title form_control"
+                            className="new_post_title form_control"
                             type="text"
                             value={this.state.title}
                             onChange={this.handleChange}/>
