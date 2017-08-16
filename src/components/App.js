@@ -48,8 +48,13 @@ class App extends Component {
         })
     }
 
-    showPostJob() {
+    showPostJob(event) {
         // toggle between show new-post and google-map
+        const rotateDeg = this.state.renderType === "map"
+            ? 'rotate(45deg)'
+            : 'rotate(0deg)';
+        event.currentTarget.style.transform = rotateDeg;
+
         let mapOrJob = this.state.renderType == "map" ? "new_post" : "map"
         this.setState({
             renderType: mapOrJob
@@ -63,8 +68,6 @@ class App extends Component {
     render() {
         // This create const for each state; don't need to always type this.state.(state)
         const {allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType} = this.state
-
-
         return (
             <div className="App">
                 <div className="App-header">
