@@ -49,6 +49,7 @@ class App extends Component {
     }
 
     showPostJob() {
+        // toggle between show new-post and google-map
         let mapOrJob = this.state.renderType == "map" ? "new_post" : "map"
         this.setState({
             renderType: mapOrJob
