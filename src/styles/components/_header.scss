@@ -1,0 +1,14 @@
+.add_post_svg {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+    transition: all .5s ease-out;
+
+}
+ svg:hover #add_post {
+    fill: #111;
+    transition: 200ms;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
+ }
