@@ -49,7 +49,7 @@ body {
   transition: all .5s ease-out; }
 
 svg:hover #add_post {
-  fill: #111;
+  fill: #8ccce8;
   transition: 200ms;
   transition-timing-function: ease-in-out;
   cursor: pointer; }
@@ -73,16 +73,20 @@ svg:hover #add_post {
     .all_jobs_wrapper .scroll_wrapper .one_job {
       margin: 10px;
       border-radius: 5px;
-      padding: 10px; }
+      padding: 10px 15px 5px 15px; }
       .all_jobs_wrapper .scroll_wrapper .one_job h3, .all_jobs_wrapper .scroll_wrapper .one_job p {
         margin: 5px 0;
         overflow: hidden; }
       .all_jobs_wrapper .scroll_wrapper .one_job p.location_posted_date {
         display: flex;
         justify-content: space-between;
-        color: rgba(41, 56, 64, 0.5); }
+        color: rgba(41, 56, 64, 0.5);
+        border-top: 1px solid rgba(158, 158, 158, 0.3);
+        padding-top: 5px; }
       .all_jobs_wrapper .scroll_wrapper .one_job:hover {
         box-shadow: 3px 3px 11px 1px #888888; }
+        .all_jobs_wrapper .scroll_wrapper .one_job:hover p.location_posted_date {
+          border-top: 1px solid #00BCD4; }
       .all_jobs_wrapper .scroll_wrapper .one_job:nth-child(odd) {
         background-color: #f8feff; }
       .all_jobs_wrapper .scroll_wrapper .one_job:nth-child(even) {
