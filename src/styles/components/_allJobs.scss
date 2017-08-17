@@ -1,7 +1,47 @@
 @import "../variables";
 
 .all_jobs_wrapper {
-  @include  border_style;
-  margin: 10px;
-  text-align: justify;
+    @include border_style;
+    margin: 10px;
+    text-align: justify;
+    background-color: rgb(241, 241, 241);
+    position: relative;
+    overflow: hidden;
+
+    .scroll_wrapper {
+        overflow-y: auto;
+        position: absolute;
+        height: 100%;
+        right: -15px;
+
+        .one_job {
+            // border: 1px solid gray;
+            margin: 10px;
+            border-radius: 5px;
+            padding: 10px;
+
+            h3,p {
+                margin: 5px 0;
+                overflow: hidden;
+            }
+            // p {
+            //     margin: 5px 0;
+            // }
+            p.location_posted_date {
+                display: flex;
+                justify-content: space-between;
+                color: rgba(41, 56, 64, 0.5);
+            }
+            &:hover {
+                box-shadow: 3px 3px 11px 1px #888888;
+            }
+            &:nth-child(odd) {
+                background-color: #f8feff;
+            }
+            &:nth-child(even) {
+                background-color: white;
+            }
+        }
+    }
+
 }
