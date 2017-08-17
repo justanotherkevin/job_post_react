@@ -1,5 +1,9 @@
+body {
+  height: 100vh; }
+
 .App {
-  text-align: center; }
+  text-align: center;
+  height: 100vh; }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -7,20 +11,20 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 10%;
   padding: 20px;
-  color: white; }
-
-.App-intro {
-  font-size: large; }
+  color: white;
+  position: relative; }
 
 .app_body_wrapper {
+  height: 90%;
   display: flex;
   flex-direction: row; }
   .app_body_wrapper .job_history_wrapper {
     flex: 1; }
   .app_body_wrapper .all_jobs_wrapper {
-    flex: 3; }
+    flex: 3;
+    overflow-y: auto; }
   .app_body_wrapper .map_job_post_wrapper {
     flex: 3; }
 
@@ -37,6 +41,19 @@
   #google_map {
     height: 500px; } }
 
+.add_post_svg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  margin: 10px;
+  transition: all .5s ease-out; }
+
+svg:hover #add_post {
+  fill: #111;
+  transition: 200ms;
+  transition-timing-function: ease-in-out;
+  cursor: pointer; }
+
 .job_history_wrapper {
   border: 2px solid gray;
   margin: 10px; }
@@ -44,7 +61,32 @@
 .all_jobs_wrapper {
   border: 2px solid gray;
   margin: 10px;
-  text-align: justify; }
+  text-align: justify;
+  background-color: #f1f1f1;
+  position: relative;
+  overflow: hidden; }
+  .all_jobs_wrapper .scroll_wrapper {
+    overflow-y: auto;
+    position: absolute;
+    height: 100%;
+    right: -15px; }
+    .all_jobs_wrapper .scroll_wrapper .one_job {
+      margin: 10px;
+      border-radius: 5px;
+      padding: 10px; }
+      .all_jobs_wrapper .scroll_wrapper .one_job h3, .all_jobs_wrapper .scroll_wrapper .one_job p {
+        margin: 5px 0;
+        overflow: hidden; }
+      .all_jobs_wrapper .scroll_wrapper .one_job p.location_posted_date {
+        display: flex;
+        justify-content: space-between;
+        color: rgba(41, 56, 64, 0.5); }
+      .all_jobs_wrapper .scroll_wrapper .one_job:hover {
+        box-shadow: 3px 3px 11px 1px #888888; }
+      .all_jobs_wrapper .scroll_wrapper .one_job:nth-child(odd) {
+        background-color: #f8feff; }
+      .all_jobs_wrapper .scroll_wrapper .one_job:nth-child(even) {
+        background-color: white; }
 
 .job_info_wrapper {
   border: 2px solid gray;
@@ -79,14 +121,14 @@
         left: 3px;
         font-size: 16px;
         color: #d9d9d9;
-        transition: all .2s ease-out; }
+        transition: all 0.2s ease-out; }
       .new_post_wrapper .input_group .form_control:focus {
         outline: none;
         border-width: 1px;
         border-color: #8080ff;
-        transition: all .5s ease-out; }
-      .new_post_wrapper .input_group .form_control:focus + label,
-      .new_post_wrapper .input_group .form_control.has_value + label {
+        transition: all 0.5s ease-out; }
+      .new_post_wrapper .input_group .form_control.has_value + label,
+      .new_post_wrapper .input_group .form_control:focus + label {
         top: -15px;
         font-size: 12px;
         color: #8080ff; }

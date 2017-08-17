@@ -1,7 +1,10 @@
 @import "variables";
-
+body {
+  height: 100vh;
+}
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
@@ -11,16 +14,14 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 10%;
   padding: 20px;
   color: white;
-}
-
-.App-intro {
-  font-size: large;
+  position: relative;
 }
 
 .app_body_wrapper {
+  height: 90%;
   display: flex;
   flex-direction: row;
   .job_history_wrapper {
@@ -28,6 +29,7 @@
   }
   .all_jobs_wrapper {
     flex: 3;
+    overflow-y: auto;
   }
   .map_job_post_wrapper {
     flex: 3;
@@ -51,6 +53,7 @@
 }
 
 
+@import 'components/header';
 @import 'components/jobHistory';
 @import 'components/allJobs';
 @import 'components/jobInfo';
