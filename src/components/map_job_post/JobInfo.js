@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import NewPost from './NewPost';
 
 class JobInfo extends Component {
 
@@ -9,6 +10,7 @@ class JobInfo extends Component {
       editJob: false,
       oneJob: {}
     }
+    this.toggleEditJob = this.toggleEditJob.bind(this);
   }
   // need to mount the data for onejob to the state; only once
   componentWillMount() {
@@ -27,14 +29,24 @@ class JobInfo extends Component {
     // })
   }
 
-
+  toggleEditJob() {
+    const editJobState = this.state.editJob
+    const newJobState = editJobState === false ? true : false;
+    this.setState({editJob : newJobState});
+  }
 
   render() {
-    const { jobInfo, editJob }= this.state
-    let renderJob = null;
-    if (editJob === false ) {
-      renderJob =
+    const jobInfo = this.state.oneJob;
+    const editJob = this.state.editJob;
+
+    return (
+      <div>
+
+      {editJob ? (
+        <NewPost JobInfo={jobInfo}/>
+      ) : (
         <div className="job_info_wrapper side_div">
+          <button onClick={this.toggleEditJob}>click me </button>
           { Object.keys(jobInfo).length > 0 &&
             <div>
               <h3>{jobInfo.title}</h3>
@@ -49,29 +61,9 @@ class JobInfo extends Component {
             </div>
           }
         </div>
-    } else {
-      renderJob =
-      <div className="job_info_wrapper side_div">
-        { Object.keys(jobInfo).length > 0 &&
-          <div>
-            <h3>{jobInfo.title}</h3>
-            <p>{jobInfo.company_name} - {jobInfo.location}</p>
-            <p>{jobInfo.summary}</p>
-            <p>Desire skills: {jobInfo.skills} </p>
-            <p>Salary: {jobInfo.lower_salary} - {jobInfo.upper_salary}</p>
-            <h4>Job Type: </h4>
-            <h4>Job Location: </h4>
-            <h4>Experience Requirement: </h4>
-            <p>Posted on: {jobInfo.date_created}</p>
-          </div>
-        }
-      </div>
-    }
-    debugger
-    return (
-      {renderJob}
+      )}
+    </div>
     )
-  };
-
+  }
 };
 export default JobInfo
