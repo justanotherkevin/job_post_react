@@ -11,11 +11,13 @@ class AllJobs extends Component {
 
     return (
       <div className="all_jobs_wrapper">
-        <p>this is the All job compon </p>
-        {this.props.allJobs.map(
-          ( job, index ) =>
-          <JobSample key={ job.id } job={ job } showOneJob={ this.props.showOneJob }/>
-        )}
+        <div className="scroll_wrapper">
+
+          {this.props.allJobs.map(
+            ( job, index ) =>
+            <JobSample key={ job.id } job={ job } showOneJob={ this.props.showOneJob }/>
+          )}
+        </div>
       </div>
     )
   };
