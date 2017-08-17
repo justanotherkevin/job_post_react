@@ -24,11 +24,11 @@ class App extends Component {
         this.showPostJob = this.showPostJob.bind(this);
         this.mountApiGetData = this.mountApiGetData.bind(this);
     };
-
+    // set the state before rendering the DOM, so that the DOM does not show blank for a few sec
     componentWillMount() {
         this.mountApiGetData();
     };
-
+    // call the rails api to get data, the set the state with respose
     mountApiGetData() {
         const self = this;
         axios.get('http://localhost:3000/job_posts').then(function(response) {
@@ -48,14 +48,14 @@ class App extends Component {
         })
     }
 
+    // toggle between show new-post and google-map
     showPostJob(event) {
-        // toggle between show new-post and google-map
         const rotateDeg = this.state.renderType === "map"
             ? 'rotate(45deg)'
             : 'rotate(0deg)';
         event.currentTarget.style.transform = rotateDeg;
 
-        let mapOrJob = this.state.renderType == "map" ? "new_post" : "map"
+        const mapOrJob = this.state.renderType == "map" ? "new_post" : "map"
         this.setState({
             renderType: mapOrJob
         })
