@@ -10,7 +10,11 @@ class SimpleMap extends Component {
     };
 
     render() {
-        const AnyReactComponent = ({ text }) => <div className="google_marker">{text}</div>;
+        const AnyReactComponent = ({ text }) =>
+            <div className="google_marker">
+                {text}
+            </div>;
+
         return (
             <GoogleMapReact
                 defaultCenter={this.props.center}
