@@ -7,7 +7,7 @@ import NewPost from './NewPost';
 
 class MapJobPost extends Component {
     // switchcase for 3 components
-    notification(show) {
+    renderComponents(show) {
         switch (show) {
             case 'map':
                 return <Map />;
@@ -25,8 +25,7 @@ class MapJobPost extends Component {
         // return the desire component
         return (
             <div className='map_job_post_wrapper'>
-                <p>this is the map job and post compon</p>
-                {this.notification(this.props.renderType)}
+                {this.renderComponents(this.props.renderType)}
             </div>
         )
     };
