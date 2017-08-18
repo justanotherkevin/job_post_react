@@ -6,12 +6,13 @@
     position: relative;
 
     .edit_job_icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 1em;
+        
         .edit_job_icon_color {
             @include icon_style($color-primary);
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            margin: 1em;
 
         }
         &:hover > .edit_job_icon_color {
