@@ -87,6 +87,20 @@
             margin: 0 auto;
             border: 2px solid #1ECD97;
             border-radius: 40px;
+            background-color: white;
+            font:{
+                weight: 600;
+                size: 13px;
+            }
+            color: #1ECD97;
+            transition: all .3s ease-out;
+
+            &:hover {
+                cursor: pointer;
+                background-color: #1ECD97;
+                color: white;
+
+            }
         }
     }
 }
