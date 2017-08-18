@@ -8,25 +8,17 @@ class JobInfo extends Component {
     super();
     this.state = {
       editJob: false,
-      oneJob: {}
+      // oneJob: {}
     }
     this.toggleEditJob = this.toggleEditJob.bind(this);
   }
   // need to mount the data for onejob to the state; only once
   componentWillMount() {
-    this.state.oneJob = this.props.oneJob;
+    // this.state.oneJob = this.props.oneJob;
   }
 
   editJob() {
-    console.log("hello");
-    const jobID = this.props.oneJob.id;
-    const url = `http://localhost:3000/job_posts/${jobID}`
-    debugger
-    // axios.put('http://localhost:3000/job_posts/1', oneJob ).then( (res) => {
-    //   console.log("res ");
-    // }).catch( (err) => {
-    //   console.log(err);
-    // })
+
   }
 
   toggleEditJob() {
@@ -36,13 +28,13 @@ class JobInfo extends Component {
   }
 
   render() {
-    const jobInfo = this.state.oneJob;
+    const jobInfo = this.props.oneJob;
     const editJob = this.state.editJob;
 
     return (
       <div>
         {editJob ? (
-          <NewPost JobInfo={jobInfo}/>
+          <NewPost jobInfo={jobInfo}/>
         ) : (
           <div className="job_info_wrapper side_div">
             <button onClick={this.toggleEditJob}>click me to edit </button>
