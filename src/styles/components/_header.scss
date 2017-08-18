@@ -4,10 +4,11 @@
     bottom: 0;
     margin: 10px;
     transition: all .5s ease-out;
-
+    // background-color: red;
+    border-radius: 100%;
 }
  svg:hover #add_post {
-    fill: rgb(140, 204, 232);
+    fill: $color_secondary_brighter;
     transition: 200ms;
     transition-timing-function: ease-in-out;
     cursor: pointer;
