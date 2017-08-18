@@ -1,4 +1,12 @@
 
+$color_primary: #1ECD97;
+$color_primary_brighter: #6EE3BF;
+$color_primary_draker: #008F64;
+
+$color_secondary: #FFA925;
+$color_secondary_brighter: #FFCB7C;
+$color_secondary_darker: #D88300;
+
 @mixin border_style {
     border: 2px solid gray;
 }
