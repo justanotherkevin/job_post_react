@@ -47,12 +47,12 @@ class NewPost extends Component {
     createJob(event) {
         const newJob = this.state.newjob
         const self = this;
-        axios.post('http://localhost:3000/job_posts', newJob).then( (response) => {
-            self.props.mountApiGetData();
-            alert('A new post was submitted');
-        }).catch( (error) => {
-            alert('Seem like theres an error on our end');
-        });
+        // axios.post('http://localhost:3000/job_posts', newJob).then( (response) => {
+        //     self.props.mountApiGetData();
+        //     alert('A new post was submitted');
+        // }).catch( (error) => {
+        //     alert('Seem like theres an error on our end');
+        // });
         event.preventDefault();
     }
 
@@ -84,6 +84,15 @@ class NewPost extends Component {
 
     closeNewPost() {
         this.props.showGoogleMap();
+    }
+
+    onSubmitButton(event) {
+        event.target.style.width = "0px"
+        setTimeout( () => {console.log("waiting") }, 1000 )
+        event.target.style.width = "100%"
+        event.target.innerText = "SUBMITED"
+        event.target.style.animation = "flip-in-hor-bottom 1.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both"
+
     }
 
     render() {
@@ -174,8 +183,9 @@ class NewPost extends Component {
 
                     <button
                         type="submit"
-                        className="form_submit_button">
-                        hello
+                        className="form_submit_button"
+                        onClick={this.onSubmitButton} >
+                        SUBMIT
                     </button>
 
                     <button onClick={this.closeNewPost} >close me </button>
