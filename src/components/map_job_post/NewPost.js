@@ -13,8 +13,7 @@ class NewPost extends Component {
                 location: "",
                 skills: "",
                 summary: "",
-                lower_salary: "",
-                upper_salary: "",
+                salary: "",
                 date_created: "",
             }
         };
@@ -88,13 +87,43 @@ class NewPost extends Component {
     }
 
     render() {
-        const submitForm = this.state.editingMode === true ? this.updateJob : this.createJob
+        const submitForm = this.state.editingMode === true
+            ? this.updateJob
+            : this.createJob
+
         return (
             <div className="new_post_wrapper">
                 <button onClick={this.closeNewPost} >close me </button>
                 <h3 className="new_post_header">This is posting a job!</h3>
 
                 <form className="new_post_form" onSubmit={submitForm}>
+
+                    <div className="input_group">
+                        <div className="company_name_and_location_wrapper">
+                            <div className="company_name_wrapper">
+                                <input
+                                    className={"new_post_company_name form_control " + (this.state.newjob['company_name'] === ''? '' : 'has_value') }
+                                    value={this.state.newjob.company_name}
+                                    onChange={this.handleChange}/>
+                                <label>Company Name:</label>
+                            </div>
+                            <div className="company_location_wrapper">
+                                <input
+                                    className={"new_post_location form_control " + (this.state.newjob['location'] === ''? '' : 'has_value') }
+                                    value={this.state.newjob.location}
+                                    onChange={this.handleChange}/>
+                                <label>Location:</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* <div className="input_group">
+                        <input
+                            className={"new_post_location form_control " + (this.state.newjob['location'] === ''? '' : 'has_value') }
+                            value={this.state.newjob.location}
+                            onChange={this.handleChange}/>
+                        <label>Location:</label>
+                    </div> */}
 
                     <div className="input_group">
                         <input
@@ -106,19 +135,11 @@ class NewPost extends Component {
                     </div>
 
                     <div className="input_group">
-                        <input
-                            className={"new_post_company_name form_control " + (this.state.newjob['company_name'] === ''? '' : 'has_value') }
-                            value={this.state.newjob.company_name}
+                        <textarea
+                            className={"new_post_summary form_control " + (this.state.newjob['summary'] === ''? '' : 'has_value') }
+                            value={this.state.newjob.summary}
                             onChange={this.handleChange}/>
-                        <label>Company Name:</label>
-                    </div>
-
-                    <div className="input_group">
-                        <input
-                            className={"new_post_location form_control " + (this.state.newjob['location'] === ''? '' : 'has_value') }
-                            value={this.state.newjob.location}
-                            onChange={this.handleChange}/>
-                        <label>Location:</label>
+                        <label>Summary:</label>
                     </div>
 
                     <div className="input_group">
@@ -130,18 +151,19 @@ class NewPost extends Component {
                     </div>
 
                     <div className="input_group">
-                        <textarea
-                            className={"new_post_summary form_control " + (this.state.newjob['summary'] === ''? '' : 'has_value') }
-                            value={this.state.newjob.summary}
-                            onChange={this.handleChange}/>
-                        <label>Summary:</label>
+                        <select value="full-time form_control">
+                            <option value="full-time">Full-Time</option>
+                            <option value="part-time">Part-Time</option>
+                            <option value="no-time">No-Time</option>
+                        </select>
                     </div>
 
-                    <select value="full-time">
-                        <option value="full-time">Full-Time</option>
-                        <option value="part-time">Part-Time</option>
-                        <option value="no-time">No-Time</option>
-                    </select>
+                    <div>
+                        <input className="new_post_salary" value={this.state.newjob.salary} onChange={this.handleChange} type="range" min="50000" max="200000" step="10" />
+                        { this.state.newjob.salary === "" &&
+                            <label>$50000</label> }
+                        <label>{ this.state.newjob.salary}</label>
+                    </div>
 
                     <label>
                         <input type="submit" value="Submit"/>
