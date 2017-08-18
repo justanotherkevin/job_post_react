@@ -15,7 +15,7 @@ class NewPost extends Component {
                 summary: "",
                 lower_salary: "",
                 upper_salary: "",
-                date_created: ""
+                date_created: "",
             }
         };
         this.closeNewPost = this.closeNewPost.bind(this);
@@ -23,7 +23,7 @@ class NewPost extends Component {
         this.createJob = this.createJob.bind(this);
         this.updateJob = this.updateJob.bind(this);
     }
-
+    // if coming to edit/update job => set state, else creating new job use blank state
     componentWillMount() {
         if (this.props.jobInfo) {
           const jobInfo = this.props.jobInfo;
@@ -32,7 +32,7 @@ class NewPost extends Component {
           console.log("not hello");
         }
     }
-    
+    // using className to apply same function to all input field when input change
     handleChange(event) {
         const targetClassName = event.target.className.split(" ")[0].replace("new_post_", "")
         const modNewjob = this.state.newjob
@@ -44,28 +44,24 @@ class NewPost extends Component {
         });
     }
 
+    // post routes to api; remount App state
     createJob(event) {
         const newJob = this.state.newjob
         const self = this;
         axios.post('http://localhost:3000/job_posts', newJob).then( (response) => {
-            // after successful POST, mount the a GET call
             self.props.mountApiGetData();
             alert('A new post was submitted');
         }).catch( (error) => {
             alert('Seem like theres an error on our end');
         });
-
-        // post to rails api ==> make new job into jobpost database
-        // recall database for new updated jobposts data
-        // should then auto re-render with new wjob on top of all jobposts data state
         event.preventDefault();
     }
 
+    // put routes to update/edit a job; remount App state
     updateJob(event) {
         const thisJob = this.state.newjob
         const self = this;
         const url = `http://localhost:3000/job_posts/${thisJob.id}`
-
         axios.put(url, thisJob ).then( (res) => {
             self.props.mountApiGetData();
             alert('Job updated');
@@ -111,7 +107,7 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <input
-                            className={'new_post_company_name form_control ' + (this.state.newjob['company_name'] === ''? '' : 'has_value') }
+                            className={"new_post_company_name form_control " + (this.state.newjob['company_name'] === ''? '' : 'has_value') }
                             value={this.state.newjob.company_name}
                             onChange={this.handleChange}/>
                         <label>Company Name:</label>
@@ -135,11 +131,18 @@ class NewPost extends Component {
 
                     <div className="input_group">
                         <textarea
-                            className={"new_post_summay form_control " + (this.state.newjob['summary'] === ''? '' : 'has_value') }
+                            className={"new_post_summary form_control " + (this.state.newjob['summary'] === ''? '' : 'has_value') }
                             value={this.state.newjob.summary}
                             onChange={this.handleChange}/>
                         <label>Summary:</label>
                     </div>
+
+                    <select value="full-time">
+                        <option value="full-time">Full-Time</option>
+                        <option value="part-time">Part-Time</option>
+                        <option value="no-time">No-Time</option>
+                    </select>
+
                     <label>
                         <input type="submit" value="Submit"/>
                     </label>
