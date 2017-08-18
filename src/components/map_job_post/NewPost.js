@@ -13,7 +13,7 @@ class NewPost extends Component {
                 location: "",
                 skills: "",
                 summary: "",
-                salary: "",
+                salary: "50000",
                 date_created: "",
             }
         };
@@ -93,7 +93,7 @@ class NewPost extends Component {
 
         return (
             <div className="new_post_wrapper">
-                <button onClick={this.closeNewPost} >close me </button>
+
                 <h3 className="new_post_header">This is posting a job!</h3>
 
                 <form className="new_post_form" onSubmit={submitForm}>
@@ -151,23 +151,34 @@ class NewPost extends Component {
                     </div>
 
                     <div className="input_group">
-                        <select value="full-time form_control">
-                            <option value="full-time">Full-Time</option>
-                            <option value="part-time">Part-Time</option>
-                            <option value="no-time">No-Time</option>
-                        </select>
+                        <div className="ect_wrapper">
+
+                            <div className="job_salary_wrapper">
+                                <label>Salary:</label>
+                                <input className="new_post_salary" value={this.state.newjob.salary} onChange={this.handleChange} type="range" min="50000" max="200000" step="10" />
+                                {/* { this.state.newjob.salary === "" &&
+                                <label>$50000</label> } */}
+                                <label>${ this.state.newjob.salary}</label>
+                            </div>
+
+                            <div className="job_type_wrapper">
+                                <select value="full-time">
+                                    <option value="full-time">Full-Time</option>
+                                    <option value="part-time">Part-Time</option>
+                                    <option value="no-time">No-Time</option>
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div>
-                        <input className="new_post_salary" value={this.state.newjob.salary} onChange={this.handleChange} type="range" min="50000" max="200000" step="10" />
-                        { this.state.newjob.salary === "" &&
-                            <label>$50000</label> }
-                        <label>{ this.state.newjob.salary}</label>
-                    </div>
+                    <button
+                        type="submit"
+                        className="form_submit_button">
+                        hello
+                    </button>
 
-                    <label>
-                        <input type="submit" value="Submit"/>
-                    </label>
+                    <button onClick={this.closeNewPost} >close me </button>
                 </form>
             </div>
         )
