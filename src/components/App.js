@@ -91,7 +91,7 @@ class App extends Component {
             <div className="App">
                 <div className="App_header">
                     {/* mayebe we want a header? */}
-                    <h3 className="header_message" ref={header_message}>{notification}</h3>
+                    <h3 className="header_message" ref="header_message">{notification}</h3>
                 </div>
                 <div className="app_body_wrapper">
                     {/* <JobHistory
