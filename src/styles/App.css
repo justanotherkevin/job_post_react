@@ -27,6 +27,9 @@
     transform: translateY(0) translateX(0);
     opacity: 1; } }
 
+.tracking_in_contract_bck {
+  animation: tracking-in-contract-bck 5s forwards; }
+
 @keyframes tracking-in-contract-bck {
   0% {
     letter-spacing: 5em;
@@ -78,7 +81,7 @@ body {
 .header_message {
   margin: 0;
   color: white;
-  animation: tracking-in-contract-bck 4s both; }
+  animation: tracking-in-contract-bck 5s forwards; }
 
 .job_history_wrapper {
   border: 2px solid gray;
