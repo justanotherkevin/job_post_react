@@ -33,12 +33,32 @@
 }
 
 @keyframes slide-in-tr {
-  0% {
-    transform: translateY(-1000px) translateX(1000px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0) translateX(0);
-    opacity: 1;
-  }
+    0% {
+        transform: translateY(-1000px) translateX(1000px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes tracking-in-contract-bck {
+    0% {
+        letter-spacing: 5em;
+        transform: translateZ(1400px);
+        opacity: 0;
+    }
+    30% {
+        letter-spacing: .5em;
+        opacity: 1;
+    }
+    70% {
+        letter-spacing: .5em;
+        opacity: 1;
+    }
+    100% {
+        transform: translateZ(0px);
+        opacity: 0;
+    }
 }
