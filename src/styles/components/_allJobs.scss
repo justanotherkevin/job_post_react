@@ -24,9 +24,7 @@
                 margin: 5px 0;
                 overflow: hidden;
             }
-            // p {
-            //     margin: 5px 0;
-            // }
+
             p.location_posted_date {
                 display: flex;
                 justify-content: space-between;
@@ -34,6 +32,8 @@
                 border-top: 1px solid rgba(158, 158, 158, 0.3);
                 padding-top: 5px;
             }
+
+
             &:hover {
                 box-shadow: 3px 3px 11px 1px #888888;
                 p.location_posted_date {
@@ -46,6 +46,11 @@
             &:nth-child(even) {
                 background-color: white;
             }
+        }
+
+        .one_job.active_job {
+            border: 2px solid $color_secondary;
+            animation: shadow-pop-tr 0.3s both;
         }
     }
 
