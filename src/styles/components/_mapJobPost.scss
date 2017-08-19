@@ -1,10 +1,30 @@
 @import "../variables";
 
 .map_job_post_wrapper {
-  @include  border_style;
-  margin: 10px;
+    @include border_style;
+    margin: 10px;
+    position: relative;
+    background-color: $color_map_job_post_bg;
 
-  .map {
-    position: relative !important;
-  }
+        .add_post_svg {
+            position: absolute;
+            right: 0;
+            top: 0;
+            margin: 5px;
+            transition: all .5s ease-out;
+            border-radius: 100%;
+            fill: $color-primary;
+            z-index: 1;
+        }
+         svg:hover #add_post {
+            fill: $color_secondary_brighter;
+            transition: 200ms;
+            transition-timing-function: ease-in-out;
+            cursor: pointer;
+         }
+
+
+    .map {
+        position: relative !important;
+    }
 }
