@@ -7,6 +7,15 @@ $color_secondary: #FFA925;
 $color_secondary_brighter: #FFCB7C;
 $color_secondary_darker: #D88300;
 
+$color_map_job_post_bg: #f1f1f1;
+
 @mixin border_style {
     border: 2px solid gray;
+}
+
+@mixin icon_style($color) {
+    fill: $color;
+    transition: 250ms;
+    transition-timing-function: ease-in-out;
+    cursor: pointer;
 }
