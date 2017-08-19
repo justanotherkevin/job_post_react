@@ -24,10 +24,12 @@ class App extends Component {
         this.showPostJob = this.showPostJob.bind(this);
         this.mountApiGetData = this.mountApiGetData.bind(this);
     };
+
     // set the state before rendering the DOM, so that the DOM does not show blank for a few sec
     componentWillMount() {
         this.mountApiGetData();
     };
+
     // call the rails api to get data, the set the state with respose
     mountApiGetData() {
         const self = this;
@@ -40,9 +42,9 @@ class App extends Component {
         });
     };
 
+    // function to trigger show one job details
     showOneJob(data) {
         this.setState({
-            // the child will chose to send which job to show
             mapJobPostData: data,
             renderType: "job_info"
         })
@@ -57,15 +59,17 @@ class App extends Component {
 
         event.currentTarget.style.transform = rotateDeg;
         if (rotateDeg === "rotate(45deg)" ) {
-            event.currentTarget.style.backgroundColor ="#FFA925"
+            event.currentTarget.style.backgroundColor ="#1ECD97"
+            event.currentTarget.style.fill = "#FFCB7C"
         } else {
-            event.currentTarget.style.backgroundColor = "transparent";
+            event.currentTarget.style.backgroundColor = "white";
+            event.currentTarget.style.fill = "#1ECD97"
         }
         this.setState({
             renderType: mapOrJob
         })
     }
-
+    // function to show the map
     showGoogleMap() {
         this.setState({renderType: "map"})
     }
@@ -105,6 +109,7 @@ class App extends Component {
                         renderType={renderType}
                         mountApiGetData={this.mountApiGetData}
                         showGoogleMap={this.showGoogleMap}
+                        showPostJob={this.showPostJob}
                     />
                 </div>
             </div>
