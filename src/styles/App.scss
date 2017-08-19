@@ -9,12 +9,12 @@ body {
   height: 100vh;
 }
 
-.App-header {
+.App_header {
   background-color: #222;
   height: 10%;
-  padding: 20px;
-  color: white;
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .app_body_wrapper {
