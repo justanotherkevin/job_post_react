@@ -3,7 +3,7 @@ import axios from 'axios';
 import '../styles/App.css';
 // import data for testing
 import jobsData from '../data/allJobData';
-import { findDOMNode } from 'react-dom';
+import ReactDOM, { findDOMNode } from 'react-dom';
 
 import Search from './SearchBar';
 import AllJobs from './jobs/AllJobs';
@@ -78,10 +78,15 @@ class App extends Component {
     showGoogleMap() {
         this.setState({renderType: "map"})
     }
+
     setHeaderMessage(string) {
         this.setState({notification:string})
         const el = findDOMNode(this.refs.header_message)
-        debugger
+        //
+        // ReactDOM.render(
+        //     el,
+        //     document.getElementById('header')
+        // );
         // el.style.animation = 'tracking-in-contract-bck 5s forwards'
     }
     render() {
@@ -89,7 +94,7 @@ class App extends Component {
         const {allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType, notification} = this.state
         return (
             <div className="App">
-                <div className="App_header">
+                <div id="header" className="App_header">
                     {/* mayebe we want a header? */}
                     <h3 className="header_message" ref="header_message">{notification}</h3>
                 </div>

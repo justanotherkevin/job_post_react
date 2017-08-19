@@ -1,6 +1,6 @@
 @import "variables";
 @import "animation";
-
+@import "mediaqueries";
 body {
   height: 100vh;
 }
@@ -15,22 +15,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 10px;
+
 }
 
 .app_body_wrapper {
   height: 90%;
   display: flex;
   flex-direction: row;
-    .job_history_wrapper {
+
+  .all_jobs_wrapper,
+  .map_job_post_wrapper {
     flex: 1;
-  }
-  .all_jobs_wrapper {
-    flex: 3;
     overflow-y: auto;
   }
-  .map_job_post_wrapper {
-    flex: 3;
-  }
+
 }
 
 #google_map {
