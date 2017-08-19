@@ -42,7 +42,9 @@
         opacity: 1;
     }
 }
-
+.tracking_in_contract_bck {
+    animation: tracking-in-contract-bck 5s forwards;
+}
 @keyframes tracking-in-contract-bck {
     0% {
         letter-spacing: 5em;
