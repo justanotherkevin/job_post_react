@@ -3,6 +3,7 @@ import axios from 'axios';
 import '../styles/App.css';
 // import data for testing
 import jobsData from '../data/allJobData';
+import { findDOMNode } from 'react-dom';
 
 import Search from './SearchBar';
 import AllJobs from './jobs/AllJobs';
@@ -31,7 +32,11 @@ class App extends Component {
     componentWillMount() {
         this.mountApiGetData();
     };
-
+    componentDidUpdate() {
+        if(this.animatedTextRef)
+            this.animatedTextRef.startAnimation(500, 0, () => {
+         })
+    }
     // call the rails api to get data, the set the state with respose
     mountApiGetData() {
         const self = this;
@@ -40,7 +45,7 @@ class App extends Component {
             self.setState({allJobsData: response.data});
         }).catch(function(error) {
             // use hardcoded data if error
-            self.setState({allJobsData: jobsData});
+            // self.setState({allJobsData: jobsData});
         });
     };
 
@@ -77,6 +82,9 @@ class App extends Component {
     }
     setHeaderMessage(string) {
         this.setState({notification:string})
+        const el = findDOMNode(this.refs.header_message)
+        debugger
+        // el.style.animation = 'tracking-in-contract-bck 5s forwards'
     }
     render() {
         // This create const for each state; don't need to always type this.state.(state)
@@ -85,7 +93,7 @@ class App extends Component {
             <div className="App">
                 <div className="App_header">
                     {/* mayebe we want a header? */}
-                    <h3 className="header_message">{notification}</h3>
+                    <h3 className="header_message" ref={ci => this.animatedTextRef = ci}>{notification}</h3>
                 </div>
                 <div className="app_body_wrapper">
                     {/* <JobHistory
