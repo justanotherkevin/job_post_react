@@ -18,6 +18,7 @@ class MapJobPost extends Component {
                     mountApiGetData={this.props.mountApiGetData}
                     showGoogleMap={this.props.showGoogleMap}
                     showPostJob={this.props.showPostJob}
+                    setHeaderMessage={this.props.setHeaderMessage}
                 />;
             default:
                 return null;
