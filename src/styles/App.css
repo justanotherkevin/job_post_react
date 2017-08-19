@@ -1,3 +1,47 @@
+@keyframes flip-in-hor-bottom {
+  0% {
+    transform: rotateX(50deg);
+    opacity: 1; }
+  35% {
+    transform: rotateX(90deg);
+    opacity: 0; }
+  100% {
+    transform: rotateX(0);
+    opacity: 1;
+    background-color: #1ECD97;
+    color: white; } }
+
+@keyframes shadow-pop-tr {
+  0% {
+    box-shadow: 0 0 #3e3e3e;
+    transform: translateX(0) translateY(0); }
+  100% {
+    box-shadow: 4px -4px #D88300, 8px -8px #D88300;
+    transform: translateX(-8px) translateY(8px); } }
+
+@keyframes slide-in-tr {
+  0% {
+    transform: translateY(-1000px) translateX(1000px);
+    opacity: 0; }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 1; } }
+
+@keyframes tracking-in-contract-bck {
+  0% {
+    letter-spacing: 5em;
+    transform: translateZ(1400px);
+    opacity: 0; }
+  30% {
+    letter-spacing: .5em;
+    opacity: 1; }
+  70% {
+    letter-spacing: .5em;
+    opacity: 1; }
+  100% {
+    transform: translateZ(0px);
+    opacity: 0; } }
+
 body {
   height: 100vh; }
 
@@ -5,16 +49,12 @@ body {
   text-align: center;
   height: 100vh; }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
-
-.App-header {
+.App_header {
   background-color: #222;
   height: 10%;
-  padding: 20px;
-  color: white;
-  position: relative; }
+  display: flex;
+  align-items: center;
+  justify-content: center; }
 
 .app_body_wrapper {
   height: 90%;
@@ -28,12 +68,6 @@ body {
   .app_body_wrapper .map_job_post_wrapper {
     flex: 3; }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
-
 #google_map {
   height: 300px; }
 
@@ -41,18 +75,10 @@ body {
   #google_map {
     height: 500px; } }
 
-.add_post_svg {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  margin: 10px;
-  transition: all .5s ease-out; }
-
-svg:hover #add_post {
-  fill: #8ccce8;
-  transition: 200ms;
-  transition-timing-function: ease-in-out;
-  cursor: pointer; }
+.header_message {
+  margin: 0;
+  color: white;
+  animation: tracking-in-contract-bck 4s both; }
 
 .job_history_wrapper {
   border: 2px solid gray;
@@ -91,51 +117,135 @@ svg:hover #add_post {
         background-color: #f8feff; }
       .all_jobs_wrapper .scroll_wrapper .one_job:nth-child(even) {
         background-color: white; }
+    .all_jobs_wrapper .scroll_wrapper .one_job.active_job {
+      border: 2px solid #FFA925;
+      animation: shadow-pop-tr 0.3s both; }
 
-.job_info_wrapper {
-  border: 2px solid gray;
-  margin: 10px; }
+.jobinfo_wrapper {
+  margin: 0 25px;
+  position: relative;
+  height: 100%; }
+  .jobinfo_wrapper .jobinfo {
+    height: 100%;
+    display: flex;
+    align-items: center; }
+    .jobinfo_wrapper .jobinfo .jobinfo_details {
+      position: relative;
+      text-align: left;
+      animation: slide-in-tr 0.5s both; }
+      .jobinfo_wrapper .jobinfo .jobinfo_details .edit_job_icon {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        margin: 1em; }
+        .jobinfo_wrapper .jobinfo .jobinfo_details .edit_job_icon .edit_job_icon_color {
+          fill: #1ECD97;
+          transition: 250ms;
+          transition-timing-function: ease-in-out;
+          cursor: pointer; }
+        .jobinfo_wrapper .jobinfo .jobinfo_details .edit_job_icon:hover > .edit_job_icon_color {
+          fill: #FFA925; }
 
 .map_job_post_wrapper {
   border: 2px solid gray;
-  margin: 10px; }
+  margin: 10px;
+  position: relative;
+  background-color: #f1f1f1; }
+  .map_job_post_wrapper .add_post_svg {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 5px;
+    transition: all .5s ease-out;
+    border-radius: 100%;
+    fill: #1ECD97;
+    z-index: 1; }
+  .map_job_post_wrapper svg:hover #add_post {
+    fill: #FFCB7C;
+    transition: 200ms;
+    transition-timing-function: ease-in-out;
+    cursor: pointer; }
   .map_job_post_wrapper .map {
     position: relative !important; }
 
 .new_post_wrapper {
-  color: #333333; }
+  height: 100%;
+  background-color: #f1f1f1;
+  color: #333333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: slide-in-tr 0.5s both; }
   .new_post_wrapper .new_post_form {
     display: flex;
-    flex-direction: column; }
-  .new_post_wrapper .input_group {
-    position: relative;
-    margin: 10px auto; }
-    .new_post_wrapper .input_group .form_control {
+    flex-direction: column;
+    width: 85%;
+    max-width: 480px; }
+    .new_post_wrapper .new_post_form .input_group {
       position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 35px;
-      font-size: 16px;
-      border: none;
-      border-bottom: 1px solid #d9d9d9;
-      background-color: transparent; }
-      .new_post_wrapper .input_group .form_control + label {
-        position: absolute;
-        top: 10px;
-        left: 3px;
+      margin: 10px 0; }
+      .new_post_wrapper .new_post_form .input_group .company_name_and_location_wrapper {
+        display: flex;
+        flex-direction: row; }
+        .new_post_wrapper .new_post_form .input_group .company_name_and_location_wrapper .company_name_wrapper {
+          flex: 1;
+          position: relative;
+          margin-right: 20px; }
+        .new_post_wrapper .new_post_form .input_group .company_name_and_location_wrapper .company_location_wrapper {
+          flex: 1;
+          position: relative; }
+      .new_post_wrapper .new_post_form .input_group .ect_wrapper {
+        width: 100%; }
+        .new_post_wrapper .new_post_form .input_group .ect_wrapper .job_type_wrapper,
+        .new_post_wrapper .new_post_form .input_group .ect_wrapper .job_salary_wrapper {
+          display: inline;
+          margin: 0 20px; }
+      .new_post_wrapper .new_post_form .input_group textarea.new_post_summary {
+        height: 150px; }
+      .new_post_wrapper .new_post_form .input_group .form_control {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 35px;
         font-size: 16px;
-        color: #d9d9d9;
-        transition: all 0.2s ease-out; }
-      .new_post_wrapper .input_group .form_control:focus {
-        outline: none;
-        border-width: 1px;
-        border-color: #8080ff;
-        transition: all 0.5s ease-out; }
-      .new_post_wrapper .input_group .form_control.has_value + label,
-      .new_post_wrapper .input_group .form_control:focus + label {
-        top: -15px;
-        font-size: 12px;
-        color: #8080ff; }
+        border: none;
+        border-bottom: 1px solid #bfbfbf;
+        background-color: transparent; }
+        .new_post_wrapper .new_post_form .input_group .form_control + label {
+          position: absolute;
+          top: 10px;
+          left: 3px;
+          font-size: 16px;
+          color: #bfbfbf;
+          transition: all 0.2s ease-out; }
+        .new_post_wrapper .new_post_form .input_group .form_control:focus {
+          outline: none;
+          border-width: 1px;
+          border-color: #1ECD97;
+          transition: all 0.5s ease-out; }
+        .new_post_wrapper .new_post_form .input_group .form_control.has_value + label,
+        .new_post_wrapper .new_post_form .input_group .form_control:focus + label {
+          top: -15px;
+          font-size: 12px;
+          color: #1ECD97; }
+    .new_post_wrapper .new_post_form .form_submit_button {
+      height: 40px;
+      width: 120px;
+      margin: 0 auto;
+      border: 2px solid #1ECD97;
+      border-radius: 40px;
+      background-color: white;
+      font-weight: 600;
+      font-size: 13px;
+      color: #1ECD97;
+      transition: all .3s ease-out; }
+      .new_post_wrapper .new_post_form .form_submit_button:focus {
+        outline: none; }
+      .new_post_wrapper .new_post_form .form_submit_button:hover {
+        cursor: pointer;
+        background-color: #1ECD97;
+        color: white; }
 
 .google_marker {
   border: 5px solid black;

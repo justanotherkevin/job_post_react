@@ -17,12 +17,14 @@ class App extends Component {
             // jobHistoryData: [],
             oneJob: [],
             renderType: "map",
-            mapJobPostData: []
+            mapJobPostData: [],
+            notification: "Landing aimation, such wow"
         };
         this.showOneJob = this.showOneJob.bind(this);
         this.showGoogleMap = this.showGoogleMap.bind(this);
         this.showPostJob = this.showPostJob.bind(this);
         this.mountApiGetData = this.mountApiGetData.bind(this);
+        this.setHeaderMessage = this.setHeaderMessage.bind(this);
     };
 
     // set the state before rendering the DOM, so that the DOM does not show blank for a few sec
@@ -55,7 +57,7 @@ class App extends Component {
         const rotateDeg = this.state.renderType === "map"
             ? 'rotate(45deg)'
             : 'rotate(0deg)';
-        const mapOrJob = this.state.renderType == "map" ? "new_post" : "map"
+        const mapOrJob = this.state.renderType === "map" ? "new_post" : "map"
 
         event.currentTarget.style.transform = rotateDeg;
         if (rotateDeg === "rotate(45deg)" ) {
@@ -73,14 +75,17 @@ class App extends Component {
     showGoogleMap() {
         this.setState({renderType: "map"})
     }
-
+    setHeaderMessage(string) {
+        this.setState({notification:string})
+    }
     render() {
         // This create const for each state; don't need to always type this.state.(state)
-        const {allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType} = this.state
+        const {allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType, notification} = this.state
         return (
             <div className="App">
-                <div className="App-header">
+                <div className="App_header">
                     {/* mayebe we want a header? */}
+                    <h3 className="header_message">{notification}</h3>
                 </div>
                 <div className="app_body_wrapper">
                     {/* <JobHistory
@@ -96,6 +101,7 @@ class App extends Component {
                         mountApiGetData={this.mountApiGetData}
                         showGoogleMap={this.showGoogleMap}
                         showPostJob={this.showPostJob}
+                        setHeaderMessage={this.setHeaderMessage}
                     />
                 </div>
             </div>
