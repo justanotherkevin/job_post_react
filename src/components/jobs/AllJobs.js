@@ -5,21 +5,17 @@ class AllJobs extends Component {
     constructor() {
         super();
         this.state = {
-            focusJob: ""
+            focusJobId: ""
         };
         this.setFocusJob = this.setFocusJob.bind(this);
     };
-
+    // keep job that is last clicked
     setFocusJob(job_id) {
-        this.setState( {focusJob: job_id} );
+        this.setState( {focusJobId: job_id} );
     };
 
     render() {
-        // better for performance if it was not set in variable first
-        // const eachJob = this.props.allJobs.map(( job, index ) =>
-        //   <JobSample key={ job.id } job={ job } changeStateJobInfoData={ this.props.changeStateJobInfoData }/>
-        // )
-        const focus_job = this.state.focusJob
+        const { focusJobId } = this.state
         return (
             <div className="all_jobs_wrapper">
                 <div className="scroll_wrapper">
@@ -30,7 +26,7 @@ class AllJobs extends Component {
                             job={job}
                             showOneJob={this.props.showOneJob}
                             setFocusJob={this.setFocusJob}
-                            focusJob={focus_job}
+                            focusJobId={focusJobId}
                         />
                     )}
                 </div>
