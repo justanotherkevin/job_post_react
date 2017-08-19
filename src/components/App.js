@@ -33,9 +33,7 @@ class App extends Component {
         this.mountApiGetData();
     };
     componentDidUpdate() {
-        if(this.animatedTextRef)
-            this.animatedTextRef.startAnimation(500, 0, () => {
-         })
+
     }
     // call the rails api to get data, the set the state with respose
     mountApiGetData() {
@@ -93,7 +91,7 @@ class App extends Component {
             <div className="App">
                 <div className="App_header">
                     {/* mayebe we want a header? */}
-                    <h3 className="header_message" ref={ci => this.animatedTextRef = ci}>{notification}</h3>
+                    <h3 className="header_message" ref={header_message}>{notification}</h3>
                 </div>
                 <div className="app_body_wrapper">
                     {/* <JobHistory
