@@ -1,4 +1,3 @@
-
 // ----------------------------------------
 // animation
 // ----------------------------------------
@@ -19,4 +18,27 @@
         background-color: $color_primary;
         color: white;
     }
+}
+
+@keyframes shadow-pop-tr {
+    0% {
+        box-shadow: 0 0 #3e3e3e;
+        transform: translateX(0) translateY(0);
+    }
+
+    100% {
+        box-shadow: 4px -4px $color_secondary_darker, 8px -8px $color_secondary_darker;
+        transform: translateX(-8px) translateY(8px);
+    }
+}
+
+@keyframes slide-in-tr {
+  0% {
+    transform: translateY(-1000px) translateX(1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 1;
+  }
 }
