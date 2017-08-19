@@ -45,29 +45,32 @@ class NewPost extends Component {
 
     // post routes to api; remount App state
     createJob(event) {
+        event.preventDefault();
         const newJob = this.state.newjob
         const self = this;
-        // axios.post('http://localhost:3000/job_posts', newJob).then( (response) => {
-        //     self.props.mountApiGetData();
-        //     alert('A new post was submitted');
-        // }).catch( (error) => {
-        //     alert('Seem like theres an error on our end');
-        // });
-        event.preventDefault();
+        axios.post('http://localhost:3000/job_posts', newJob).then( response => {
+            self.props.mountApiGetData();
+            // alert('A new post was submitted');
+            console.log(response);
+            self.props.setHeaderMessage("A new post was submitted");
+        }).catch( error => {
+            console.log(error);
+            // alert('Seem like theres an error on our end');
+        });
     }
 
     // put routes to update/edit a job; remount App state
     updateJob(event) {
+        event.preventDefault();
         const thisJob = this.state.newjob
         const self = this;
         const url = `http://localhost:3000/job_posts/${thisJob.id}`
-        axios.put(url, thisJob ).then( (res) => {
+        axios.put(url, thisJob ).then( response => {
             self.props.mountApiGetData();
-            alert('Job updated');
-        }).catch( (error) => {
-            alert('Seem like theres an error on our end');
+            // alert('Job updated');
+        }).catch( error => {
+            // alert('Seem like theres an error on our end');
         });
-        event.preventDefault();
     }
 
     getDateTime() {
@@ -85,14 +88,10 @@ class NewPost extends Component {
     closeNewPost() {
         this.props.showGoogleMap();
     }
-
+    // Add ONLY flip animation for button when clicked
     onSubmitButton(event) {
-        event.target.style.width = "0px"
-        setTimeout( () => {console.log("waiting") }, 1000 )
-        event.target.style.width = "100%"
         event.target.innerText = "SUBMITED"
-        event.target.style.animation = "flip-in-hor-bottom 1.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both"
-
+        event.target.style.animation = "flip-in-hor-bottom 1.3s both"
     }
 
     render() {
@@ -106,7 +105,6 @@ class NewPost extends Component {
                 <h3 className="new_post_header">This is posting a job!</h3>
 
                 <form className="new_post_form" onSubmit={submitForm}>
-
                     <div className="input_group">
                         <div className="company_name_and_location_wrapper">
                             <div className="company_name_wrapper">
@@ -125,14 +123,6 @@ class NewPost extends Component {
                             </div>
                         </div>
                     </div>
-
-                    {/* <div className="input_group">
-                        <input
-                            className={"new_post_location form_control " + (this.state.newjob['location'] === ''? '' : 'has_value') }
-                            value={this.state.newjob.location}
-                            onChange={this.handleChange}/>
-                        <label>Location:</label>
-                    </div> */}
 
                     <div className="input_group">
                         <input
@@ -165,8 +155,6 @@ class NewPost extends Component {
                             <div className="job_salary_wrapper">
                                 <label>Salary:</label>
                                 <input className="new_post_salary" value={this.state.newjob.salary} onChange={this.handleChange} type="range" min="50000" max="200000" step="10" />
-                                {/* { this.state.newjob.salary === "" &&
-                                <label>$50000</label> } */}
                                 <label>${ this.state.newjob.salary}</label>
                             </div>
 
@@ -184,11 +172,11 @@ class NewPost extends Component {
                     <button
                         type="submit"
                         className="form_submit_button"
-                        onClick={this.onSubmitButton} >
-                        SUBMIT
+                        onClick={this.onSubmitButton}
+                        >
+                        { this.state.editingMode === true ? "UPDATE" : "SUBMIT" }
                     </button>
 
-                    <button onClick={this.closeNewPost} >close me </button>
                 </form>
             </div>
         )
