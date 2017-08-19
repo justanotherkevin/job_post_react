@@ -1,23 +1,36 @@
 @import "../variables";
 
-.job_info_wrapper {
-    @include border_style;
-    margin: 10px;
+.jobinfo_wrapper {
+    margin: 0 25px;
     position: relative;
+    height: 100%;
 
-    .edit_job_icon {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        margin: 1em;
-        
-        .edit_job_icon_color {
-            @include icon_style($color-primary);
+    .jobinfo {
+        height: 100%;
+        display: flex;
+        align-items: center;
 
-        }
-        &:hover > .edit_job_icon_color {
-            fill: $color_secondary;
+            .jobinfo_details {
+                position: relative;
+                text-align: left;
+                animation: slide-in-tr 0.5s both;
 
-        }
+                .edit_job_icon {
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    margin: 1em;
+
+                    .edit_job_icon_color {
+                        @include icon_style($color-primary);
+
+                    }
+                    &:hover > .edit_job_icon_color {
+                        fill: $color_secondary;
+
+                    }
+                }
+            }
+
     }
 }
