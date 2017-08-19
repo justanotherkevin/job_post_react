@@ -7,4 +7,12 @@
                 flex-direction: column;
             }
         }
+
+        .new_post_wrapper {
+            .new_post_form {
+                button.form_submit_button {
+                    margin: 30px auto;
+                }
+            }
+        }
 }

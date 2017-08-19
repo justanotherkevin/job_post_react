@@ -102,8 +102,6 @@ class NewPost extends Component {
         return (
             <div className="new_post_wrapper">
 
-                <h3 className="new_post_header">This is posting a job!</h3>
-
                 <form className="new_post_form" onSubmit={submitForm}>
                     <div className="input_group">
                         <div className="company_name_and_location_wrapper">
