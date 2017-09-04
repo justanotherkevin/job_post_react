@@ -16,7 +16,7 @@
     box-shadow: 0 0 #3e3e3e;
     transform: translateX(0) translateY(0); }
   100% {
-    box-shadow: 4px -4px #D88300, 8px -8px #D88300;
+    box-shadow: 3px -3px #D88300, 4px -4px #D88300, 8px -8px #D88300, 6px -6px #D88300, 7px -7px #D88300;
     transform: translateX(-8px) translateY(8px); } }
 
 @keyframes slide-in-tr {

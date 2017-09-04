@@ -27,7 +27,7 @@
     }
 
     100% {
-        box-shadow: 4px -4px $color_secondary_darker, 8px -8px $color_secondary_darker;
+        box-shadow: 3px -3px $color_secondary_darker, 4px -4px $color_secondary_darker, 8px -8px $color_secondary_darker, 6px -6px $color_secondary_darker, 7px -7px $color_secondary_darker;
         transform: translateX(-8px) translateY(8px);
     }
 }
