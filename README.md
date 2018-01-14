@@ -1,6 +1,7 @@
 # Job Post Site Demo
 
 Code challenge for a developer position.
+build intended with active Rails REST end point. Simplifed for demo, JSON data are stored in current repo, reducing the need for active REST end-point.   
 
 ## Getting Started
 
