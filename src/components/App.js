@@ -17,13 +17,12 @@ class App extends Component {
             allJobsData: [],
             // jobHistoryData: [],
             oneJob: [],
-            renderType: "map",
+            // renderType: "map",
             mapJobPostData: [],
             notification: "Landing aimation, such wow"
         };
         this.showOneJob = this.showOneJob.bind(this);
         this.showGoogleMap = this.showGoogleMap.bind(this);
-        this.showPostJob = this.showPostJob.bind(this);
         this.mountApiGetData = this.mountApiGetData.bind(this);
         this.setHeaderMessage = this.setHeaderMessage.bind(this);
     };
@@ -54,24 +53,25 @@ class App extends Component {
         })
     }
     // toggle between show new-post and google-map
-    showPostJob(event) {
-        const rotateDeg = this.state.renderType === "map" ? 'rotate(45deg)' : 'rotate(0deg)';
-        const showMapOrJob = this.state.renderType === "map" ? "new_post" : "map";
+    // showPostJob(event) {
+    //     // const rotateDeg = this.state.renderType === "map" ? 'rotate(45deg)' : 'rotate(0deg)';
+    //     const showMapOrJob = this.state.renderType === "map" ? "new_post" : "map";
 
-        event.currentTarget.style.transform = rotateDeg;
-        if (rotateDeg === "rotate(45deg)" ) {
-            event.currentTarget.style.backgroundColor ="#1ECD97"
-            event.currentTarget.style.fill = "#FFCB7C"
-        } else {
-            event.currentTarget.style.backgroundColor = "white";
-            event.currentTarget.style.fill = "#1ECD97"
-        }
-        this.setState({
-            renderType: showMapOrJob
-        })
-    }
+    //     // event.currentTarget.style.transform = rotateDeg;
+    //     // if (rotateDeg === "rotate(45deg)" ) {
+    //     //     event.currentTarget.style.backgroundColor ="#1ECD97"
+    //     //     event.currentTarget.style.fill = "#FFCB7C"
+    //     // } else {
+    //     //     event.currentTarget.style.backgroundColor = "white";
+    //     //     event.currentTarget.style.fill = "#1ECD97"
+    //     // }
+    //     this.setState({
+    //         renderType: showMapOrJob
+    //     })
+    // }
     // function to show the map
     showGoogleMap() {
+        debugger
         this.setState({renderType: "map"})
     }
 
@@ -99,7 +99,7 @@ class App extends Component {
                     />
                     <MapJobPost
                         mapJobPostData={mapJobPostData}
-                        renderType={renderType}
+                        // renderType={renderType}
                         mountApiGetData={this.mountApiGetData}
                         showGoogleMap={this.showGoogleMap}
                         showPostJob={this.showPostJob}
