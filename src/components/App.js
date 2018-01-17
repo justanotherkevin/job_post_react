@@ -43,7 +43,7 @@ class App extends Component {
             self.setState({allJobsData: response.data});
         }).catch(function(error) {
             // use hardcoded data if error
-            // self.setState({allJobsData: jobsData});
+            self.setState({allJobsData: jobsData});
         });
     };
 
