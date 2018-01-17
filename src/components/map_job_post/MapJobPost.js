@@ -6,8 +6,14 @@ import JobInfo from './JobInfo';
 import NewPost from './NewPost';
 
 class MapJobPost extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            renderType: "map"
+        }
+    }
     // switchcase for 3 components
-    renderComponents(show) {
+    renderComponents = (show) => {
         switch (show) {
             case 'map':
                 return <Map />;
@@ -24,14 +30,17 @@ class MapJobPost extends Component {
                 return null;
         }
     }
-
+    toggleNewJobPost = () => {
+        const showMapOrJob = this.state.renderType === "map" ? "new_post" : "map";
+        this.setState( {renderType: showMapOrJob } )
+    }
     render() {
 
         return (
             <div className='map_job_post_wrapper'>
                 <svg
                     className="add_post_svg"
-                    onClick={this.props.showPostJob}
+                    onClick={this.toggleNewJobPost}
                     width="38px"
                     height="38px"
                     viewBox="0 0 32 32"
@@ -42,7 +51,7 @@ class MapJobPost extends Component {
                         </g>
                 </svg>
 
-                {this.renderComponents(this.props.renderType)}
+                {this.renderComponents(this.state.renderType)}
             </div>
         )
     };
