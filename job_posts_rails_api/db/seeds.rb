@@ -1,5 +1,7 @@
 require "faker"
 
+JobPost.destory_all 
+
 def make_skills
   skills = []
   rand(5..10).times do
