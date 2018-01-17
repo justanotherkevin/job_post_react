@@ -46,7 +46,6 @@ class App extends Component {
             self.setState({allJobsData: jobsData});
         });
     };
-
     // function to trigger show one job details
     showOneJob(data) {
         this.setState({
@@ -54,13 +53,10 @@ class App extends Component {
             renderType: "job_info"
         })
     }
-
     // toggle between show new-post and google-map
     showPostJob(event) {
-        const rotateDeg = this.state.renderType === "map"
-            ? 'rotate(45deg)'
-            : 'rotate(0deg)';
-        const mapOrJob = this.state.renderType === "map" ? "new_post" : "map"
+        const rotateDeg = this.state.renderType === "map" ? 'rotate(45deg)' : 'rotate(0deg)';
+        const showMapOrJob = this.state.renderType === "map" ? "new_post" : "map";
 
         event.currentTarget.style.transform = rotateDeg;
         if (rotateDeg === "rotate(45deg)" ) {
@@ -71,7 +67,7 @@ class App extends Component {
             event.currentTarget.style.fill = "#1ECD97"
         }
         this.setState({
-            renderType: mapOrJob
+            renderType: showMapOrJob
         })
     }
     // function to show the map
@@ -82,13 +78,8 @@ class App extends Component {
     setHeaderMessage(string) {
         this.setState({notification:string})
         const el = findDOMNode(this.refs.header_message)
-        //
-        // ReactDOM.render(
-        //     el,
-        //     document.getElementById('header')
-        // );
-        // el.style.animation = 'tracking-in-contract-bck 5s forwards'
     }
+
     render() {
         // This create const for each state; don't need to always type this.state.(state)
         const {allJobsData, jobHistoryData, mapJobPostData, oneJob, renderType, notification} = this.state
