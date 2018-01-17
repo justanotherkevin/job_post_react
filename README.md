@@ -8,6 +8,7 @@ build intended with active Rails REST end point. Simplifed for demo, JSON data a
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.   
 Get NPM: https://www.npmjs.com/get-npm
 
+Here is the Rails Api (requirement): https://github.com/polymer940c/job_posts_rails_api   
 
 ### Prerequisites
 **If you already have npm install, skip this**   
