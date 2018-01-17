@@ -4,21 +4,27 @@ class JobSample extends Component {
 
     constructor(props) {
         super(props);
-        this.mountJobInfo = this.mountJobInfo.bind(this)
     };
 
-    mountJobInfo() {
-        const {job} = this.props
-        this.props.showOneJob(job);
-        this.props.setFocusJob(job.id)
+    mountJobInfo = () => {
+        // set focused job
+        const {job, focusJobId} = this.props
+        
+        if (job.id === focusJobId ) {
+            this.props.setFocusJob(0);
+        } else {
+            this.props.showOneJob(job);
+            this.props.setFocusJob(job.id);
+        }
     };
 
     render() {
         const { job, focusJobId } = this.props
         const focusJobClass = focusJobId === job.id ? "active_job" : "nope"
+
         return (
-            <div className={"one_job "+ focusJobClass}>
-                <h3 onClick={this.mountJobInfo}>{job.title}</h3>
+            <div onClick={this.mountJobInfo} className={"one_job "+ focusJobClass}>
+                <h3>{job.title}</h3>
                 <p>{job.company_name}</p>
                 <p>{job.summary.split(' ').slice(0, 15).join(' ') + "..."}</p>
                 <p className="location_posted_date">

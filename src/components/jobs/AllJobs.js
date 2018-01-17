@@ -7,10 +7,10 @@ class AllJobs extends Component {
         this.state = {
             focusJobId: ""
         };
-        this.setFocusJob = this.setFocusJob.bind(this);
+        // this.setFocusJob = this.setFocusJob.bind(this);
     };
     // keep job that is last clicked
-    setFocusJob(job_id) {
+    setFocusJob = (job_id) => {
         this.setState( {focusJobId: job_id} );
     };
 
